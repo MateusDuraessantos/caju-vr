@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Caju"/>
+ 
+  <title>Caju</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+ 
+<style>
+  /* Estilos Globais ↑ */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+  }
+  :root {
+    --red: #E80537;
+    --orange: #FF7500;
+  }
+  body::-webkit-scrollbar-thumb {
+      background-color: #E80537;
+      border-radius: 6px;
+      border: 0px solid #F5F5F5;
+  }
+  ::-webkit-scrollbar {
+      width: 6px;
+      height: 12px;
+      background-color: #F5F5F5;
+      border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background-color: #cdcdcd;
+      border-radius: 6px;
+      border: 0px solid #F5F5F5;
+  }
+  ::-webkit-scrollbar-corner {
+      background-color: transparent;
+  }
+  .max__width {
+    max-width: 1280px;
+    width: calc(100% - 200px);
+    margin: auto
+  }
+  body {
+    background: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .button__red {
+    color: white;
+    padding: 12px 16px;
+    font-weight: 700;
+    border-radius: 16px;
+    background: var(--red);
+    border: none;
+    width: max-content;
+  }
+/* Estilos Globais ↑ */
+</style>
+
+<style>
+  /* Banner */
+  .banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 0;  
+    margin: auto;
+    text-align: center;
+  }
+  .banner__container {
+    position: relative;
+    display: flex;  
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 500px);
+    z-index: 3;
+  }
+  h1 {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 100px;
+  }
+  .banner__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 64px;
+    width: 100%;
+    background: var(--red);
+    z-index: 2;
+    top: 20px;
+    border-radius: 14px;
+  }
+  .banner__logo {
+    object-fit: contain;
+  }
+  .banner__text {
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 60px;
+  }
+  .banner__text strong, .banner__description span {
+    color: var(--red);
+  }
+  .banner__description {
+    font-size: 20px;
+  }
+  .banner__card {
+    position: absolute;
+    height: 450px;
+    bottom: -100px;
+  }
+  .banner__card--1 {
+    height: 540px;
+    left: 0;
+  }
+  .banner__card--2 {
+    right: 0;
+  }
+
+  /* video */
+
+  .video {
+    
+  }
+
+  .video__container {
+    position: relative;
+    border-radius: 40px;
+    border: 2px solid #d3d3d3;
+    height: 600px;
+    z-index: 1;
+    background: white;
+    padding: 14px;
+  }
+  
+  .video__content {
+    background: black;
+    border-radius: 32px;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* FAQ */
+  .faq * {
+    transition: 1s;
+  }
+  .faq__card {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 30px;
+    border: 1px solid #d3d3d3;
+    padding: 20px;
+    cursor: pointer;
+    color: #4d4d4d;
+  }
+  .faq__card:hover {
+    background: #e6e6e6;
+  }
+  .faq__button {
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
+  }
+  .faq__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(0deg);
+    color: black;
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+    background: none;
+    border: none;
+  }
+  .faq__arrow:hover{
+    opacity: .4;
+  }
+  .faq__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  
+  .faq__card--collapse {
+    display: none;
+  }
+
+  .open .faq__arrow {
+    transform: rotate(90deg);
+  }
+  
+  .open .faq__card--collapse {
+    display: block;
+  }
+
+
+  /* FOOTER ↓ */
+  footer {
+    border-radius: 20px;
+    background: var(--red);
+    margin: 88px;
+  }
+  .blog_title {
+    display: flex;
+    height: 48px;
+    padding: 10px 20px;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 1277.184px;
+    background: var(--Backgrounds-Primary, #FFF);
+    color: #E80537;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+    width: 192px;
+  }
+  .container_redes {
+    display: flex;
+    justify-content: space-between;
+    padding: 4vh 5vw;
+  
+  }
+  .border {
+    background-color: #FFF;
+    height: 2px;
+    width: 90%;
+    margin-left: 5%;
+    border: none !important;
+  }
+  .container_redes_mob {
+    display: flex;
+    gap: 16px;
+  }
+  .icons {
+    display: flex;
+    gap: 16px;
+  }
+  .direitos_title {
+    color: var(--Backgrounds-Primary, #FFF);
+    font-feature-settings: 'ss01' on;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+  }
+  .termos {
+    display: flex;
+    gap: 32px;
+  }
+  .termos a {
+    color: var(--Backgrounds-Primary, #FFF);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    text-decoration-line: underline;
+  }
+  .termos p {
+    color: var(--Backgrounds-Primary, #FFF);
+    font-feature-settings: 'ss01' on;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+  }
+  .container_termos {
+    display: flex;
+    justify-content: space-between;
+    padding: 4vh 5vw;
+  }
+  /* FOOTER ↑ */
+  
+  
+  @media screen and (max-width: 1087px) {
+    /* FOOTER ↓ */
+    .container_redes {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container_blog {
+      margin: 20px 0;
+    }
+    .container_redes_mob {
+      gap: 10px;
+      display: flex;
+    }
+    .icons {
+      flex-direction: column;
+      align-items: center;
+    }
+    .container_termos {
+      flex-direction: column;
+      align-items: center;
+    }
+    .termos {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+    }
+    /* FOOTER ↑ */
+  }
+  @media screen and (max-width: 1000px) {
+  
+    /* Estilos Global ↓ */
+    .max__width {
+      width: calc(100% - 60px);
+    }
+    p:not(form p) {
+      text-align: center;
+    }
+    /* Estilos Globais ↑ */
+  
+    /* BANNER ↓ */
+    .banner {
+      padding: 60px 0 40px 0;
+    }
+    .banner__container {
+      flex-direction: column;
+      gap: 0;
+    }
+    .banner__grafismos--1 {
+      width: 200px;
+    }
+    .banner__column--responsive {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    h1 {
+      font-size: 50px;
+      line-height: 60px;
+      text-align: center;
+    }
+    .banner__ebook {
+      margin: auto;
+    }
+    .banner__p {
+      font-size: 18px;
+    }
+    .banner__column--1 {
+      padding: 30px; 
+      padding-top: 50px;
+    }
+    /* BANNER ↑ */
+  
+    /* FOOTER ↓ */
+    footer {
+      margin: 0 20px;
+    }
+    .conhece_logos_mob{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 32px 0;
+    }
+    .conhece_logos{
+      display: none;
+    }
+    /* FOOTER ↑ */
+  }
+  
+  </style>
+
+
+</head>
+
+<body>
+  
+  <!-- BANNER -->
+
+  <section class="banner max__width">
+
+    <img class="banner__card banner__card--1" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/a4bc6731-caba-4d21-8d06-3f445e1c62e2.png" alt="">
+    <img class="banner__card banner__card--2" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/a34354b1-1148-4b3f-b73b-1db2c8282b4b.png" alt="">
+
+    <div class="banner__header">
+      <img class="banner__logo" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/393e2177-4f72-4da7-867d-ca3d0b40c053.png" width="300" height="30" alt="">
+    </div>
+
+    <div class="banner__container">
+      <p class="banner__text">
+        Conheça a <strong>melhor opção</strong> de VA e VR para os funcionários da CEMIG
+      </p>
+      <p class="banner__description">
+        Você sabia que o cartão Caju funciona como cartão de crédito pré-pago e possui bandeira VISA? <span>Gerencie</span> todos os benefícios de alimentação, saúde, bem-estar e mais em uma <span>plataforma centralizada</span>.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq max__width">
+    <div>
+      <p>FAQ</p>
+      <p>Principais dúvidas sobre o uso do cartão Caju no dia a dia</p>
+    </div>
+
+    <div class="faq__grid">
+      <div class="faq__card open">
+        <div class="faq__button">
+          <p class="faq__element">Onde aceita o cartão Caju?</p>
+          <button class="faq__arrow">></button>
+        </div>
+
+        <div class="faq__card--collapse">
+          <div class="faq__card--content">nfgorewnfgiorengiore</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="video max__width">
+    <div class="video__container">
+      <div class="video__content"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+    <div>
+        <div class="container_redes">
+            <div>
+                <svg width="115" height="49" viewBox="0 0 115 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_7624_195)">
+                        <path
+                            d="M38.5389 36.0237C36.6432 34.1761 35.6953 31.5825 35.6953 28.2429C35.6953 26.1199 36.1298 24.2535 37.0015 22.6439C37.8718 21.0342 39.1058 19.7936 40.7047 18.9233C42.3023 18.0529 44.1633 17.6171 46.2863 17.6171C52.0818 17.6171 55.4094 20.4206 56.2677 26.0249H50.9013C50.7102 24.7134 50.2449 23.7295 49.5056 23.073C48.7663 22.4166 47.7168 22.0891 46.3572 22.0891C44.7355 22.0891 43.4414 22.6385 42.4761 23.7348C41.5095 24.8324 41.0269 26.3351 41.0269 28.2429C41.0269 30.1266 41.5042 31.6119 42.4574 32.6975C43.4106 33.783 44.7342 34.3258 46.428 34.3258C47.8104 34.3258 48.9027 33.9796 49.7021 33.2884C50.5003 32.5972 50.9842 31.5958 51.1513 30.283H56.5177C56.3987 31.9287 55.9455 33.3953 55.1581 34.6841C54.3706 35.9716 53.2316 36.9796 51.7409 37.7069C50.2503 38.4341 48.4668 38.7978 46.3919 38.7978C43.0523 38.7964 40.436 37.8726 38.5389 36.0237Z"
+                            fill="white" />
+                        <path
+                            d="M80.9591 38.2603H75.7719V31.9274C75.5807 34.2884 74.8829 36.0237 73.6796 37.1333C72.4751 38.243 70.8467 38.7978 68.7959 38.7978C66.9109 38.7978 65.2665 38.3807 63.8587 37.5451C62.4509 36.7109 61.36 35.501 60.5846 33.914C59.8092 32.3285 59.4215 30.426 59.4215 28.2081C59.4215 26.0142 59.8332 24.1185 60.6554 22.5195C61.479 20.9219 62.5993 19.7054 64.0178 18.8698C65.4362 18.0355 67.0285 17.6171 68.7932 17.6171C70.7973 17.6171 72.4069 18.1719 73.6235 19.2802C74.8401 20.3899 75.5553 22.1131 75.7706 24.4501V18.1532H80.9591V38.2603ZM74.5379 32.7148C75.4805 31.6186 75.951 30.1266 75.951 28.2429C75.951 26.311 75.4805 24.7963 74.5379 23.6987C73.5954 22.6024 72.2892 22.053 70.6208 22.053C68.8561 22.053 67.4309 22.5958 66.3453 23.6813C65.2598 24.7669 64.717 26.2749 64.717 28.2068C64.717 30.1145 65.2651 31.6172 66.3627 32.7148C67.459 33.8124 68.8788 34.3606 70.6194 34.3606C72.2892 34.3606 73.5954 33.8124 74.5379 32.7148Z"
+                            fill="white" />
+                        <path
+                            d="M79.6717 47.6334V42.4462C80.6971 42.7564 81.7225 42.9115 82.7479 42.9115C84.0353 42.9115 84.9538 42.6254 85.5033 42.0532C86.0514 41.481 86.3255 40.4662 86.3255 39.0117V18.1545H91.5127V39.2617C91.5127 41.4556 91.2199 43.1976 90.6357 44.485C90.0514 45.7724 89.145 46.6976 87.9164 47.2578C86.6878 47.8179 85.0487 48.0987 82.9966 48.0987C81.6623 48.0987 80.554 47.9436 79.6717 47.6334Z"
+                            fill="white" />
+                        <path
+                            d="M114.465 18.1545V38.2603H109.278V31.4274H109.241C109.241 33.1213 108.955 34.517 108.383 35.6133C107.811 36.7109 107.065 37.5157 106.147 38.0277C105.228 38.5398 104.232 38.7978 103.16 38.7978C100.989 38.7978 99.3617 38.1962 98.2761 36.9916C97.1906 35.7871 96.6478 33.9087 96.6478 31.3565V18.1545H101.835V30.0317C101.835 31.4621 102.126 32.5063 102.712 33.1614C103.296 33.8178 104.184 34.1453 105.378 34.1453C106.427 34.1453 107.339 33.7523 108.114 32.9648C108.89 32.1774 109.278 31.1039 109.278 29.7456V18.1545H114.465Z"
+                            fill="white" />
+                        <path
+                            d="M86.7711 13.9692C86.1629 13.3729 85.8594 12.6577 85.8594 11.8221C85.8594 10.9638 86.1629 10.2365 86.7711 9.64024C87.3794 9.04398 88.1014 8.74585 88.9356 8.74585C89.7698 8.74585 90.4851 9.04398 91.0827 9.64024C91.6789 10.2365 91.9771 10.9638 91.9771 11.8221C91.9771 12.6563 91.6789 13.3729 91.0827 13.9692C90.4864 14.5654 89.7712 14.8636 88.9356 14.8636C88.1014 14.8636 87.3794 14.5654 86.7711 13.9692Z"
+                            fill="white" />
+                    </g>
+                    <path
+                        d="M13.685 45.6654C18.1272 45.7479 21.8275 44.3116 23.9367 40.8032C25.4618 38.2679 24.8602 35.3167 25.6434 31.0293C26.4441 26.6396 28.382 22.3966 27.054 19.3814C26.4802 18.0782 25.7208 17.2073 24.7931 16.4839C22.2382 14.4934 18.5626 14.6967 15.9922 15.7626C12.9668 17.0164 11.3828 15.5346 9.7401 15.2281C8.33468 14.9671 7.2089 14.6544 4.98624 15.2157C4.05343 15.451 1.94014 16.4127 0.711176 18.8005C-0.982134 22.0891 0.723559 24.7059 1.94221 30.3988C3.07211 35.6789 2.70167 39.1481 4.58794 41.6906C6.47421 44.2321 9.24273 45.5828 13.685 45.6654Z"
+                        fill="white" />
+                    <path
+                        d="M17.5178 10.9949C17.5219 9.43783 16.2021 8.19132 14.5769 8.21609C14.2385 8.22125 13.9207 8.10052 13.6844 7.87763C13.4481 7.65372 13.318 7.35138 13.3191 7.02737C13.3201 6.70233 13.4511 6.39689 13.6885 6.16678C13.9268 5.93564 14.2447 5.80666 14.5831 5.8015C16.2083 5.77673 17.5343 4.47966 17.5384 2.90811C17.5425 1.35101 16.2228 0.104504 14.5976 0.129269C12.702 0.15713 10.9014 0.906272 9.53002 2.23739C8.17516 3.54891 7.42705 5.28246 7.42189 7.11508C7.41776 8.94769 8.15762 10.6585 9.50525 11.9319C10.8704 13.2228 12.6669 13.9182 14.5625 13.8893C16.1887 13.8646 17.5147 12.5665 17.5178 10.9949Z"
+                        fill="white" />
+                    <defs>
+                        <clipPath id="clip0_7624_195">
+                            <rect width="78.7695" height="39.3847" fill="white"
+                                transform="translate(35.6953 8.74585)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <div class="icons">
+                <div class="container_blog">
+                    <a data-hash="e_003_008_038_085_419_001" href="https://blog.caju.com.br/" target="_blank"
+                        class="blog_title">Acesse nosso blog</a>
+                </div>
+                <div class="container_redes_mob">
+                    <a data-hash="e_003_001_001_033_062_001" data-label="instagram"
+                        href="https://www.instagram.com/caju/" target="_blank"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49"
+                            fill="none">
+                            <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
+                            <path
+                                d="M20.0054 24.1901C20.0054 21.9791 21.7968 20.1862 24.0072 20.1862C26.2176 20.1862 28.0099 21.9791 28.0099 24.1901C28.0099 26.4011 26.2176 28.194 24.0072 28.194C21.7968 28.194 20.0054 26.4011 20.0054 24.1901ZM17.8416 24.1901C17.8416 27.5963 20.602 30.3574 24.0072 30.3574C27.4124 30.3574 30.1728 27.5963 30.1728 24.1901C30.1728 20.7839 27.4124 18.0228 24.0072 18.0228C20.602 18.0228 17.8416 20.7839 17.8416 24.1901ZM28.976 17.7782C28.9759 18.0633 29.0602 18.342 29.2185 18.5791C29.3767 18.8161 29.6017 19.001 29.8649 19.1102C30.1281 19.2194 30.4178 19.248 30.6974 19.1925C30.9769 19.137 31.2337 18.9998 31.4353 18.7984C31.6369 18.5969 31.7742 18.3401 31.8299 18.0606C31.8856 17.781 31.8572 17.4912 31.7482 17.2278C31.6393 16.9644 31.4547 16.7392 31.2178 16.5808C30.9809 16.4223 30.7024 16.3377 30.4174 16.3375H30.4168C30.0348 16.3377 29.6685 16.4895 29.3984 16.7597C29.1282 17.0298 28.9763 17.3961 28.976 17.7782ZM19.1563 33.9665C17.9856 33.9132 17.3494 33.7181 16.9265 33.5533C16.3659 33.335 15.9659 33.075 15.5454 32.6549C15.1248 32.2349 14.8645 31.8351 14.6473 31.2744C14.4824 30.8516 14.2874 30.2149 14.2342 29.044C14.176 27.7779 14.1644 27.3976 14.1644 24.1902C14.1644 20.9828 14.177 20.6035 14.2342 19.3365C14.2875 18.1655 14.484 17.5301 14.6473 17.106C14.8655 16.5453 15.1254 16.1452 15.5454 15.7245C15.9654 15.3039 16.365 15.0435 16.9265 14.8261C17.3492 14.6612 17.9856 14.4662 19.1563 14.4129C20.4219 14.3547 20.8021 14.3431 24.0072 14.3431C27.2123 14.3431 27.5928 14.3557 28.8595 14.4129C30.0302 14.4663 30.6654 14.6628 31.0893 14.8261C31.6499 15.0435 32.0499 15.3044 32.4704 15.7245C32.891 16.1446 33.1503 16.5453 33.3686 17.106C33.5334 17.5288 33.7284 18.1655 33.7816 19.3365C33.8398 20.6035 33.8515 20.9828 33.8515 24.1902C33.8515 27.3976 33.8398 27.7769 33.7816 29.044C33.7283 30.2149 33.5324 30.8514 33.3686 31.2744C33.1503 31.8351 32.8904 32.2352 32.4704 32.6549C32.0505 33.0746 31.6499 33.335 31.0893 33.5533C30.6667 33.7182 30.0302 33.9133 28.8595 33.9665C27.5939 34.0247 27.2137 34.0364 24.0072 34.0364C20.8007 34.0364 20.4216 34.0247 19.1563 33.9665ZM19.0569 12.2522C17.7786 12.3104 16.9052 12.5131 16.1424 12.8101C15.3524 13.1167 14.6837 13.528 14.0154 14.1954C13.3471 14.8628 12.9369 15.5328 12.6304 16.323C12.3336 17.0865 12.1309 17.9597 12.0727 19.2384C12.0135 20.519 12 20.9284 12 24.1901C12 27.4518 12.0135 27.8612 12.0727 29.1419C12.1309 30.4206 12.3336 31.2937 12.6304 32.0572C12.9369 32.8469 13.3472 33.5177 14.0154 34.1848C14.6836 34.8519 15.3524 35.2627 16.1424 35.5702C16.9066 35.8671 17.7786 36.0698 19.0569 36.128C20.3378 36.1863 20.7464 36.2008 24.0072 36.2008C27.268 36.2008 27.6773 36.1872 28.9575 36.128C30.2359 36.0698 31.1087 35.8671 31.872 35.5702C32.6615 35.2627 33.3307 34.8522 33.999 34.1848C34.6673 33.5174 35.0766 32.8469 35.384 32.0572C35.6808 31.2937 35.8844 30.4205 35.9417 29.1419C35.9999 27.8603 36.0134 27.4518 36.0134 24.1901C36.0134 20.9284 35.9999 20.519 35.9417 19.2384C35.8835 17.9596 35.6808 17.086 35.384 16.323C35.0766 15.5333 34.6662 14.8639 33.999 14.1954C33.3318 13.5269 32.6615 13.1167 31.873 12.8101C31.1087 12.5131 30.2358 12.3094 28.9585 12.2522C27.6782 12.194 27.2689 12.1794 24.0082 12.1794C20.7474 12.1794 20.3378 12.193 19.0569 12.2522Z"
+                                fill="#E80537" />
+                        </svg></a>
+                    <a data-hash="e_003_001_001_033_062_001" data-label="linkedin"
+                        href="https://www.linkedin.com/company/cajubeneficios/posts/?feedView=all"
+                        target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="49"
+                            viewBox="0 0 48 49" fill="none">
+                            <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
+                            <path
+                                d="M18.5207 31.7441V18.7779H14.2147V31.7441H18.5211H18.5207ZM16.3686 17.0079C17.8699 17.0079 18.8045 16.0122 18.8045 14.768C18.7764 13.4953 17.8699 12.5275 16.3972 12.5275C14.9234 12.5275 13.9609 13.4953 13.9609 14.7678C13.9609 16.0121 14.8952 17.0078 16.3404 17.0078H16.3683L16.3686 17.0079ZM20.9041 31.7441H25.2097V24.504C25.2097 24.1169 25.2378 23.7289 25.3515 23.4525C25.6626 22.6779 26.3711 21.8761 27.5609 21.8761C29.1186 21.8761 29.7421 23.065 29.7421 24.8083V31.7441H34.0476V24.3097C34.0476 20.3272 31.9236 18.4739 29.0907 18.4739C26.7681 18.4739 25.7481 19.7732 25.1813 20.6582H25.21V18.7783H20.9043C20.9605 19.9947 20.904 31.7445 20.904 31.7445L20.9041 31.7441Z"
+                                fill="#E80537" />
+                        </svg></a>
+                    <a data-hash="e_003_001_001_033_062_001" data-label="facebook"
+                        href="https://pt-br.facebook.com/cajubeneficios/" target="_blank"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49"
+                            fill="none">
+                            <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
+                            <path
+                                d="M29.8698 25.6911L30.5537 21.3458H26.3408V18.5213C26.3408 17.3332 26.929 16.1722 28.8097 16.1722H30.752V12.4719C29.6209 12.2915 28.478 12.1939 27.3325 12.1799C23.8651 12.1799 21.6014 14.2643 21.6014 18.0325V21.3458H17.7578V25.6911H21.6014V36.2013H26.3408V25.6911H29.8698Z"
+                                fill="#E80537" />
+                        </svg></a>
+                    <a data-hash="e_003_001_001_033_062_001" data-label="youtube"
+                        href="https://www.youtube.com/CajuBenef%C3%ADcios" target="_blank"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49"
+                            fill="none">
+                            <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
+                            <path
+                                d="M37.135 17.5005C36.9803 16.9184 36.6755 16.3872 36.251 15.96C35.8265 15.5328 35.2972 15.2245 34.7162 15.0661C32.5771 14.491 24.0273 14.491 24.0273 14.491C24.0273 14.491 15.4775 14.491 13.3385 15.0661C12.7575 15.2245 12.2282 15.5328 11.8037 15.96C11.3792 16.3872 11.0744 16.9184 10.9197 17.5005C10.3477 19.6488 10.3477 24.1289 10.3477 24.1289C10.3477 24.1289 10.3477 28.609 10.9197 30.7574C11.0744 31.3394 11.3792 31.8706 11.8037 32.2979C12.2282 32.7251 12.7575 33.0333 13.3385 33.1917C15.4775 33.7669 24.0273 33.7669 24.0273 33.7669C24.0273 33.7669 32.5771 33.7669 34.7162 33.1917C35.2972 33.0333 35.8265 32.7251 36.251 32.2979C36.6755 31.8706 36.9803 31.3394 37.135 30.7574C37.707 28.609 37.707 24.1289 37.707 24.1289C37.707 24.1289 37.707 19.6488 37.135 17.5005Z"
+                                fill="#E80537" />
+                            <path d="M21.2305 28.1971V20.0608L28.3812 24.1289L21.2305 28.1971Z" fill="white" />
+                        </svg></a>
+                    <a data-hash="e_003_001_001_033_062_001" data-label="x" href="https://x.com/cajubeneficios"
+                        target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="49"
+                            viewBox="0 0 48 49" fill="none">
+                            <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
+                            <path
+                                d="M30.4237 14.0359H33.8481L26.3668 22.5865L35.168 34.222H28.2767L22.8793 27.1651L16.7034 34.222H13.2769L21.2789 25.0761L12.8359 14.0359H19.9021L24.7809 20.4861L30.4237 14.0359ZM29.2219 32.1723H31.1194L18.8711 15.9779H16.8349L29.2219 32.1723Z"
+                                fill="#E80537" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="border"></div>
+        <div class="container_termos">
+            <div style="text-align: center;">
+                <p class="direitos_title">Caju® 2025. Todos os direitos reservados.</p>
+            </div>
+            <div class="termos">
+                <a data-hash="e_003_008_038_087_165_001" href="https://www.caju.com.br/privacidade"
+                    target="_blank">Política de privacidade</a>
+                <a data-hash="e_003_008_038_087_249_001" href="https://www.caju.com.br/termos-de-uso/empresas"
+                    target="_blank">Termos de Uso</a>
+                <p>Feito com 🧡 pelos Cajuenses</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>
