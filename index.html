@@ -42,7 +42,7 @@
   }
   .max__width {
     max-width: 1280px;
-    width: calc(100% - 200px);
+    width: calc(100% - 100px);
     margin: auto
   }
   body {
@@ -80,7 +80,7 @@
     position: relative;
     display: flex;
     gap: 40px;
-    padding: 40px 0;  
+    padding: 24px 0 40px 0;
     margin: auto;
     min-height: 600px;
     text-align: center;
@@ -108,7 +108,7 @@
     margin-bottom: 40px;
     background: var(--red);
     z-index: 2;
-    border-radius: 14px;
+    border-radius: 20px;
   }
   .banner__texts {
     display: flex;
@@ -140,7 +140,7 @@
     bottom: -100px;
     z-index: 1;
   }
-  .banner__card--mobile {
+  .banner__card--mobile-ctn {
     display: none;
   }
   .banner__card--1 {
@@ -160,6 +160,9 @@
   /* video */
   .video {
     position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
   }
   .video__container {
     position: relative;
@@ -184,12 +187,14 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow: hidden;    
   }
   .video__castanha {
     width: calc(100% + 400px);
     height: 100%;
     margin: auto;
+    object-fit: contain;
+    max-width: 1800px;
   }
   /* cartao__container */
   .cartao {
@@ -265,6 +270,7 @@
     background: #FCFCFC;
     gap: 12px;
     width: 100%;
+    min-height: 88px;
   }
   .column--1, .column--2  {
     display: flex;
@@ -438,6 +444,9 @@
     width: 40px;
     height: 40px;
     object-fit: contain;
+    background: #FEF0F1;
+    border-radius: 16px;
+    padding: 8px;
   }
   .vr__title--card {
     font-weight: 500;
@@ -461,7 +470,7 @@
     gap: 20px;
     border: 1px solid #E0E0E0;
     border-radius: 30px;
-    padding: 30px 24px;
+    padding: 40px 30px;
     background: #FCFCFC;
     height: 100%;
   }
@@ -504,7 +513,7 @@
   .dizem__description {
     height: 100%;
     color: #4D4D4D;
-    line-height: 24px;
+    line-height: 28px;
     font-size: 20px;
   }
   .dizem__title {
@@ -538,19 +547,16 @@
   }
   .carrossel__btn img {
     object-fit: contain;
-    width: 44px;
-    height: 44px;
+    width: 30px;
+    height: 30px;
   }
   .carrossel__btn--left, .carrossel__btn--right {
     transition: .2s;
     cursor: pointer;
-    padding: 6px;
+    padding: 14px;
   }
   .carrossel__btn--left {
-    transform: rotate(90deg);
-  }
-  .carrossel__btn--right {
-    transform: rotate(-90deg);
+    transform: scale(-1);
   }
   .carrossel__btn--left:focus, .carrossel__btn--right:focus {
     background: #a7a7a7;
@@ -559,14 +565,14 @@
 
   /* FOOTER ↓ */
   footer {
-    border-radius: 20px;
+    border-radius: 32px;
     background: var(--red);
-    margin: 88px;
+    margin-bottom: 24px !important;
+    padding: 48px 100px;
   }
   .footer__logo {
     object-fit: contain;
     object-position: left;
-    margin-bottom: 20px;
     height: 54px;
   }
   .blog_title {
@@ -575,7 +581,7 @@
     padding: 10px 20px;
     justify-content: flex-end;
     align-items: center;
-    border-radius: 1277.184px;
+    border-radius: 14px;
     background: var(--Backgrounds-Primary, #FFF);
     color: #E80537;
     text-align: center;
@@ -590,23 +596,21 @@
   .container_redes {
     display: flex;
     justify-content: space-between;
-    padding: 4vh 5vw;
-  
+    padding-bottom: 32px;
   }
   .border {
     background-color: #FFF;
     height: 2px;
-    width: 90%;
-    margin-left: 5%;
+    width: 100%;
     border: none !important;
   }
-  .container_redes_mob {
-    display: flex;
-    gap: 16px;
+  .container_redes_mob img {
+    height: 48px;
+    object-fit: contain;
   }
-  .footer__icons {
+  .footer__icons, .container_redes_mob {
     display: flex;
-    gap: 16px;
+    gap: 8px;
   }
   .direitos_title {
     color: var(--Backgrounds-Primary, #FFF);
@@ -624,7 +628,6 @@
     color: var(--Backgrounds-Primary, #FFF);
     font-size: 16px;
     font-style: normal;
-    font-weight: 500;
     line-height: 160%;
     text-decoration-line: underline;
   }
@@ -639,7 +642,7 @@
   .container_termos {
     display: flex;
     justify-content: space-between;
-    padding: 4vh 5vw;
+    padding-top: 4vh;
   }
   /* FOOTER ↑ */
   @media screen and (max-width: 1000px) {
@@ -689,36 +692,49 @@
       width: 100vw;
       gap: 0;
     }
-
     .dizem__card--mobile {
       min-width: 100%;
       padding: 0 20px;
     }
-
     /* Banner */
-    .banner__card--mobile, .marcas__img--mobile {
+    .banner__card--mobile-ctn, .marcas__img--mobile {
       display: block;
+    }
+    .banner__description {
+      text-align: start;
+      font-size: 16px
     }
     .banner {
       flex-direction: column-reverse;
       padding: 10px 0;
-      padding-bottom: 200px;
       height: max-content;
+      min-height: initial;
     }
     .banner__texts {
+      gap: 24px;
       width: 100%;
     }
+    .banner__card--mobile-ctn {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      height: 120px;
+      width: 100%;
+      transform: translateY(-16px);
+    }
     .banner__card--mobile {
-      position: absolute;
-      bottom: -30px;
-      left: calc(100% - 210px);
       object-fit: contain;
-      height: 200px;
+      height: 170px;
     }
     .marcas__img--mobile {
       width: 100%;
     }
-
+    .banner__header {
+      margin-bottom: initial;
+    }
+    .banner__container {
+      gap: 20px;
+    }
     /* .faq */
     .faq {
       margin: 40px auto;
@@ -729,7 +745,7 @@
       justify-content: center;
       gap: 16px;
       width: 100%;
-      margin: 40px auto 80px auto;
+      margin: 40px auto 60px auto;
     }
     /* .cartao__container */
     .cartao__container {
@@ -786,7 +802,6 @@
   <section class="banner max__width">
 
 
-    <img class="banner__card--mobile banner__card--1" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/f86a7fca-a24a-4d00-a72b-cb0ecfd039ea.png" alt="">
 
     <img class="banner__card banner__card--1" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/a4bc6731-caba-4d21-8d06-3f445e1c62e2.png" alt="">
     <img class="banner__card banner__card--2" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/a34354b1-1148-4b3f-b73b-1db2c8282b4b.png" alt="">
@@ -806,6 +821,11 @@
           Você sabia que o cartão Caju funciona como cartão de crédito pré-pago e possui bandeira VISA? <span><b>Gerencie</b></span> todos os benefícios de alimentação, saúde, bem-estar e mais em uma <span><b>plataforma centralizada</b></span>.
         </p>
       </div>
+
+      <div class="banner__card--mobile-ctn">
+        <img class="banner__card--mobile banner__card--1" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/f86a7fca-a24a-4d00-a72b-cb0ecfd039ea.png" alt="">
+      </div>
+
     </div>
 
   </section>
@@ -817,7 +837,7 @@
     </div>
     <div class="max__width">
       <div class="video__container">
-        <div class="video__content"></div>
+        <iframe width="560" height="315" class="video__content" src="https://www.youtube.com/embed/I-Em5CZpdGc?si=smnmxgjbsLHjQBbM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -841,7 +861,7 @@
 
     <div class="max__width">
       <div class="video__container">
-        <div class="video__content"></div>
+        <iframe width="560" height="315" class="video__content" src="https://www.youtube.com/embed/I-Em5CZpdGc?si=smnmxgjbsLHjQBbM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -899,7 +919,7 @@
 
       <div class="vr__card">
         <div class="vr__description">
-          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/ca4a3570-a3ae-4d44-a2d5-3d59eddb11fa.png">
+          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/1bf7c121-2caa-418c-b04b-5c5c12bc8bb1.png">
           <p class="vr__title--card">Cupons de descontos exclusivos dos nossos parceiros</p>
         </div>
         <p>Aproveite cupons de desconto exclusivos de parceiros como Zé Delivery, Magalu e Domino’s, direto no app Caju.</p>
@@ -907,7 +927,7 @@
       
       <div class="vr__card">
         <div class="vr__description">
-          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/ca4a3570-a3ae-4d44-a2d5-3d59eddb11fa.png">
+          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/44be9e42-f0c7-49c2-aac5-efb48898fa2a.png">
           <p class="vr__title--card">Vai de Visa</p>
         </div>
         <p>Com o cartão Caju, você acessa o programa “Vai de Visa”, garantindo descontos em lojas, passagens, hospedagens e muito mais.</p>
@@ -915,7 +935,7 @@
 
       <div class="vr__card">
         <div class="vr__description">
-          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/ca4a3570-a3ae-4d44-a2d5-3d59eddb11fa.png">
+          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/cfdaeae9-bea3-4ffd-b489-731180994f6c.png">
           <p class="vr__title--card">Pagamento por aproximação</p>
         </div>
         <p>Faça suas compras por aproximação, sem precisar digitar a senha do cartão. Mas, pode ficar tranquilo: para a sua segurança, você pode ativar e desabilitar essa função quando quiser, direto no app da Caju.</p>
@@ -923,7 +943,7 @@
 
       <div class="vr__card">
         <div class="vr__description">
-          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/ca4a3570-a3ae-4d44-a2d5-3d59eddb11fa.png">
+          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/aebde37b-8f46-4ae7-9319-ed5feacec0fc.png">
           <p class="vr__title--card">Cartões virtuais ilimitados</p>
         </div>
         <p>Tenha acesso a quantos cartões virtuais você quiser para fazer as suas compras online.</p>
@@ -931,7 +951,7 @@
 
       <div class="vr__card">
         <div class="vr__description">
-          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/ca4a3570-a3ae-4d44-a2d5-3d59eddb11fa.png">
+          <img class="vr__icon--card" width="40" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/a2c58c00-97ab-474d-98e5-9acebb277cf9.png">
           <p class="vr__title--card">Segurança no app</p>
         </div>
         <p>O app Caju conta com autenticação em dois fatores e login por biometria, garantindo mais proteção para você.</p>
@@ -955,7 +975,7 @@
     
     <div class="max__width">
       <div class="video__container">
-        <div class="video__content"></div>
+        <iframe width="560" height="315" class="video__content" src="https://www.youtube.com/embed/I-Em5CZpdGc?si=smnmxgjbsLHjQBbM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -989,7 +1009,7 @@
       <div class="dizem__card--mobile">
         <div class="dizem__card">
           <div class="dizem__ctn">
-            <img class="dizem__logo" width="220" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/7ec8f364-883f-4368-a1b9-8247186fe9a2.png" alt="">
+            <img class="dizem__logo" width="220" height="40" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/1ce0bc39-ef9b-4204-8ee8-fa25d1ae2d14.png" alt="">
           </div>
           <img class="dizem__grafismo" width="30" height="30" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/2c2a8e81-74a6-4cbb-aef3-2a1cae0c38ba.png" alt="">
           <p class="dizem__description">O cartão com flexibilidade de uso deu autonomia e liberdade para os colaboradores escolherem onde usar os benefícios.</p>
@@ -1042,8 +1062,8 @@
 
 
   <div class="carrossel__buttons">
-    <button class="carrossel__btn carrossel__btn--left" onclick="pass('left')"><img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/fd229096-ad7d-40bc-b202-286610fdd803.png" alt="" class="carrossel__icon"></button>
-    <button class="carrossel__btn carrossel__btn--right" onclick="pass('right')"><img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/fd229096-ad7d-40bc-b202-286610fdd803.png" alt="" class="carrossel__icon"></button>
+    <button class="carrossel__btn carrossel__btn--left" onclick="pass('left')"><img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/6b65ab54-62ef-45eb-a96a-2f1c67b008ea.png" alt="" class="carrossel__icon"></button>
+    <button class="carrossel__btn carrossel__btn--right" onclick="pass('right')"><img src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/6b65ab54-62ef-45eb-a96a-2f1c67b008ea.png" alt="" class="carrossel__icon"></button>
   </div>
 
   <div class="marcas__title max__width">
@@ -1074,7 +1094,7 @@
 
   <!-- Footer -->
 
-  <footer>
+  <footer class="max__width">
     <div class="container_redes">
       <img class="footer__logo" width="300" height="40"
         src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/4b014168-9993-4033-b624-83cd44fe8412.png"
@@ -1085,33 +1105,23 @@
         </div>
         <div class="container_redes_mob">
           <a data-hash="e_003_001_001_033_062_001" data-label="instagram" href="https://www.instagram.com/caju/" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49" fill="none">
-              <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
-              <path d="M20.0054 24.1901C20.0054 21.9791 21.7968 20.1862 24.0072 20.1862C26.2176 20.1862 28.0099 21.9791 28.0099 24.1901C28.0099 26.4011 26.2176 28.194 24.0072 28.194C21.7968 28.194 20.0054 26.4011 20.0054 24.1901ZM17.8416 24.1901C17.8416 27.5963 20.602 30.3574 24.0072 30.3574C27.4124 30.3574 30.1728 27.5963 30.1728 24.1901C30.1728 20.7839 27.4124 18.0228 24.0072 18.0228C20.602 18.0228 17.8416 20.7839 17.8416 24.1901ZM28.976 17.7782C28.9759 18.0633 29.0602 18.342 29.2185 18.5791C29.3767 18.8161 29.6017 19.001 29.8649 19.1102C30.1281 19.2194 30.4178 19.248 30.6974 19.1925C30.9769 19.137 31.2337 18.9998 31.4353 18.7984C31.6369 18.5969 31.7742 18.3401 31.8299 18.0606C31.8856 17.781 31.8572 17.4912 31.7482 17.2278C31.6393 16.9644 31.4547 16.7392 31.2178 16.5808C30.9809 16.4223 30.7024 16.3377 30.4174 16.3375H30.4168C30.0348 16.3377 29.6685 16.4895 29.3984 16.7597C29.1282 17.0298 28.9763 17.3961 28.976 17.7782ZM19.1563 33.9665C17.9856 33.9132 17.3494 33.7181 16.9265 33.5533C16.3659 33.335 15.9659 33.075 15.5454 32.6549C15.1248 32.2349 14.8645 31.8351 14.6473 31.2744C14.4824 30.8516 14.2874 30.2149 14.2342 29.044C14.176 27.7779 14.1644 27.3976 14.1644 24.1902C14.1644 20.9828 14.177 20.6035 14.2342 19.3365C14.2875 18.1655 14.484 17.5301 14.6473 17.106C14.8655 16.5453 15.1254 16.1452 15.5454 15.7245C15.9654 15.3039 16.365 15.0435 16.9265 14.8261C17.3492 14.6612 17.9856 14.4662 19.1563 14.4129C20.4219 14.3547 20.8021 14.3431 24.0072 14.3431C27.2123 14.3431 27.5928 14.3557 28.8595 14.4129C30.0302 14.4663 30.6654 14.6628 31.0893 14.8261C31.6499 15.0435 32.0499 15.3044 32.4704 15.7245C32.891 16.1446 33.1503 16.5453 33.3686 17.106C33.5334 17.5288 33.7284 18.1655 33.7816 19.3365C33.8398 20.6035 33.8515 20.9828 33.8515 24.1902C33.8515 27.3976 33.8398 27.7769 33.7816 29.044C33.7283 30.2149 33.5324 30.8514 33.3686 31.2744C33.1503 31.8351 32.8904 32.2352 32.4704 32.6549C32.0505 33.0746 31.6499 33.335 31.0893 33.5533C30.6667 33.7182 30.0302 33.9133 28.8595 33.9665C27.5939 34.0247 27.2137 34.0364 24.0072 34.0364C20.8007 34.0364 20.4216 34.0247 19.1563 33.9665ZM19.0569 12.2522C17.7786 12.3104 16.9052 12.5131 16.1424 12.8101C15.3524 13.1167 14.6837 13.528 14.0154 14.1954C13.3471 14.8628 12.9369 15.5328 12.6304 16.323C12.3336 17.0865 12.1309 17.9597 12.0727 19.2384C12.0135 20.519 12 20.9284 12 24.1901C12 27.4518 12.0135 27.8612 12.0727 29.1419C12.1309 30.4206 12.3336 31.2937 12.6304 32.0572C12.9369 32.8469 13.3472 33.5177 14.0154 34.1848C14.6836 34.8519 15.3524 35.2627 16.1424 35.5702C16.9066 35.8671 17.7786 36.0698 19.0569 36.128C20.3378 36.1863 20.7464 36.2008 24.0072 36.2008C27.268 36.2008 27.6773 36.1872 28.9575 36.128C30.2359 36.0698 31.1087 35.8671 31.872 35.5702C32.6615 35.2627 33.3307 34.8522 33.999 34.1848C34.6673 33.5174 35.0766 32.8469 35.384 32.0572C35.6808 31.2937 35.8844 30.4205 35.9417 29.1419C35.9999 27.8603 36.0134 27.4518 36.0134 24.1901C36.0134 20.9284 35.9999 20.519 35.9417 19.2384C35.8835 17.9596 35.6808 17.086 35.384 16.323C35.0766 15.5333 34.6662 14.8639 33.999 14.1954C33.3318 13.5269 32.6615 13.1167 31.873 12.8101C31.1087 12.5131 30.2358 12.3094 28.9585 12.2522C27.6782 12.194 27.2689 12.1794 24.0082 12.1794C20.7474 12.1794 20.3378 12.193 19.0569 12.2522Z" fill="#E80537" />
-            </svg>
+            <img height="48" width="48" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/a0320317-d2ae-4e88-8d2d-4d4c9d892df2.png" alt="">
           </a>
-          <a data-hash="e_003_001_001_033_062_001" data-label="linkedin" href="https://www.linkedin.com/company/cajubeneficios/posts/?feedView=all" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49" fill="none">
-              <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
-              <path d="M18.5207 31.7441V18.7779H14.2147V31.7441H18.5211H18.5207ZM16.3686 17.0079C17.8699 17.0079 18.8045 16.0122 18.8045 14.768C18.7764 13.4953 17.8699 12.5275 16.3972 12.5275C14.9234 12.5275 13.9609 13.4953 13.9609 14.7678C13.9609 16.0121 14.8952 17.0078 16.3404 17.0078H16.3683L16.3686 17.0079ZM20.9041 31.7441H25.2097V24.504C25.2097 24.1169 25.2378 23.7289 25.3515 23.4525C25.6626 22.6779 26.3711 21.8761 27.5609 21.8761C29.1186 21.8761 29.7421 23.065 29.7421 24.8083V31.7441H34.0476V24.3097C34.0476 20.3272 31.9236 18.4739 29.0907 18.4739C26.7681 18.4739 25.7481 19.7732 25.1813 20.6582H25.21V18.7783H20.9043C20.9605 19.9947 20.904 31.7445 20.904 31.7445L20.9041 31.7441Z" fill="#E80537" />
-            </svg>
+
+          <a data-hash="e_003_001_001_033_062_001" data-label="linkedin" href="https://www.linkedin.com/company/cajubeneficios/posts/?feedView=all" target="_blank">
+            <img height="48" width="48" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/30123b29-14e5-4d46-87ce-6e07a3dabb05.png" alt="">
           </a>
+
           <a data-hash="e_003_001_001_033_062_001" data-label="facebook" href="https://pt-br.facebook.com/cajubeneficios/" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49" fill="none">
-              <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
-              <path d="M29.8698 25.6911L30.5537 21.3458H26.3408V18.5213C26.3408 17.3332 26.929 16.1722 28.8097 16.1722H30.752V12.4719C29.6209 12.2915 28.478 12.1939 27.3325 12.1799C23.8651 12.1799 21.6014 14.2643 21.6014 18.0325V21.3458H17.7578V25.6911H21.6014V36.2013H26.3408V25.6911H29.8698Z" fill="#E80537" />
-            </svg>
+           <img height="48" width="48" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/0b79b383-a951-42a6-8ae6-2fd1506f7771.png" alt="">
           </a>
-          <a data-hash="e_003_001_001_033_062_001" data-label="youtube" href="https://www.youtube.com/CajuBenef%C3%ADcios" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49" fill="none">
-              <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
-              <path d="M37.135 17.5005C36.9803 16.9184 36.6755 16.3872 36.251 15.96C35.8265 15.5328 35.2972 15.2245 34.7162 15.0661C32.5771 14.491 24.0273 14.491 24.0273 14.491C24.0273 14.491 15.4775 14.491 13.3385 15.0661C12.7575 15.2245 12.2282 15.5328 11.8037 15.96C11.3792 16.3872 11.0744 16.9184 10.9197 17.5005C10.3477 19.6488 10.3477 24.1289 10.3477 24.1289C10.3477 24.1289 10.3477 28.609 10.9197 30.7574C11.0744 31.3394 11.3792 31.8706 11.8037 32.2979C12.2282 32.7251 12.7575 33.0333 13.3385 33.1917C15.4775 33.7669 24.0273 33.7669 24.0273 33.7669C24.0273 33.7669 32.5771 33.7669 34.7162 33.1917C35.2972 33.0333 35.8265 32.7251 36.251 32.2979C36.6755 31.8706 36.9803 31.3394 37.135 30.7574C37.707 28.609 37.707 24.1289 37.707 24.1289C37.707 24.1289 37.707 19.6488 37.135 17.5005Z" fill="#E80537" />
-              <path d="M21.2305 28.1971V20.0608L28.3812 24.1289L21.2305 28.1971Z" fill="white" />
-            </svg>
+
+          <a data-hash="e_003_001_001_033_062_001" data-label="youtube" href="https://www.youtube.com/CajuBenef%C3%ADcios" target="_blank">
+            <img height="48" width="48" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/a0d4377d-410c-47b6-aad0-a970db73155c.png" alt="">
           </a>
+
           <a data-hash="e_003_001_001_033_062_001" data-label="x" href="https://x.com/cajubeneficios" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49" fill="none">
-              <rect y="0.128906" width="48" height="48" rx="24" fill="white" />
-              <path d="M30.4237 14.0359H33.8481L26.3668 22.5865L35.168 34.222H28.2767L22.8793 27.1651L16.7034 34.222H13.2769L21.2789 25.0761L12.8359 14.0359H19.9021L24.7809 20.4861L30.4237 14.0359ZM29.2219 32.1723H31.1194L18.8711 15.9779H16.8349L29.2219 32.1723Z" fill="#E80537" />
-            </svg>
+           <img height="48" width="48" src="https://image.fala.caju.com.br/lib/fe3211737164047b701270/m/1/5de46b93-fc8b-4fde-9aa5-b43e8ba373b8.png" alt="">
           </a>
         </div>
       </div>
